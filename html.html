@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Engineering Joke Generator</title>
+  <style>
+    body {
+      background: #eef2f7;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .chatbox {
+      background: white;
+      width: 400px;
+      max-width: 95%;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .chat-header {
+      background: #0077ff;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      font-size: 1.2rem;
+    }
+    .chat-messages {
+      padding: 1rem;
+      height: 300px;
+      overflow-y: auto;
+      background: #f9fafc;
+    }
+    .message {
+      background: #e2e8f0;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 8px;
+      max-width: 80%;
+    }
+    .message.user {
+      background: #c4f1f9;
+      margin-left: auto;
+    }
+    .input-area {
+      display: flex;
+      padding: 10px;
+      border-top: 1px solid #ddd;
+    }
+    .input-area button {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      background: #0077ff;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      font-size: 1rem;
+    }
+    .input-area button:hover {
+      background: #005ecc;
+    }
+  </style>
+</head>
+<body>
+
+<div class="chatbox">
+  <div class="chat-header">🧠 Engineering Joke Generator</div>
+  <div class="chat-messages" id="chatMessages"></div>
+  <div class="input-area">
+    <button onclick="tellJoke()">Tell me a joke!</button>
+  </div>
+</div>
+
+<script>
+  const jokes = [
+    "Why did the software engineer go broke? Because he used up all his cache!",
+    "Why don't engineers trust stairs? They're always up to something.",
+    "What’s an engineer’s favorite type of music? Algo-rhythm.",
+    "Why did the mechanical engineer break up with the electrical engineer? There was no spark.",
+    "Why did the civil engineer become an architect? Because bridges just weren't connecting.",
+    "Real engineers count from 0.",
+    "Why was the capacitor so stressed? Because it couldn’t hold its charge!",
+    "Engineers: solving problems you didn’t know you had, in ways you don’t understand."
+  ];
+
+  function tellJoke() {
+    const chat = document.getElementById('chatMessages');
+
+    // Simulate user asking for a joke
+    const userMsg = document.createElement('div');
+    userMsg.className = 'message user';
+    userMsg.textContent = "Tell me a joke!";
+    chat.appendChild(userMsg);
+
+    // Generate random joke
+    const joke = jokes[Math.floor(Math.random() * jokes.length)];
+
+    setTimeout(() => {
+      const botMsg = document.createElement('div');
+      botMsg.className = 'message';
+      botMsg.textContent = "😂 " + joke;
+      chat.appendChild(botMsg);
+      chat.scrollTop = chat.scrollHeight;
+    }, 500);
+
+    chat.scrollTop = chat.scrollHeight;
+  }
+</script>
+
+</body>
+</html>
+
